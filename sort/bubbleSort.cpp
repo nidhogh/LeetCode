@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
@@ -13,18 +12,17 @@ using namespace std;
  */
 
 // 冒泡排序 从小到大排序
-void bubbleSort(vector<int> &vec)
+void bubbleSort(int arr[], int size)
 {
-    size_t len = vec.size();
-    for (size_t i = len - 1; i > 0; i--)
+    for (size_t i = size - 1; i > 0; i--)
     {
         for (size_t j = 0; j < i; j++)
         {
-            if (vec[j] > vec[j + 1])
+            if (arr[j] > arr[j + 1])
             {
-                int tmp = vec[j];
-                vec[j] = vec[j + 1];
-                vec[j + 1] = tmp;
+                int tmp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = tmp;
             }
         }
     }
@@ -32,9 +30,9 @@ void bubbleSort(vector<int> &vec)
 
 int main()
 {
-    vector<int> vec{59, 77, 70, 75, 84, 23, 23, 88, 88, 36};
-    bubbleSort(vec);
-    for (auto it : vec)
+    int arr[] = {59, 77, 70, 75, 84, 23, 23, 88, 88, 36};
+    bubbleSort(arr, 10);
+    for (auto it : arr)
         cout << it << " ";
     return 0;
 }
