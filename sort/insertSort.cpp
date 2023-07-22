@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
@@ -13,39 +12,31 @@ using namespace std;
  */
 
 // 插入排序 从小到大
-void insertSort(vector<int> &vec)
+void insertSort(int arr[], int size)
 {
-    size_t len = vec.size();
-    for (size_t i = 1; i < len; i++)
+    for (int i = 1; i < size; i++)
     {
-        if (vec[i] < vec[i - 1])
+        int key = arr[i];
+        int j = i - 1;
+
+        // 将当前元素向前插入到已排序序列的正确位置
+        while (j >= 0 && arr[j] > key)
         {
-            for (size_t j = 0; j < i; j++)
-            {
-                if (vec[i] < vec[0])
-                {
-                    vec.insert(vec.begin(), vec[i]);
-                    break;
-                }
-                else if (vec[j] <= vec[i] && vec[i] <= vec[j + 1])
-                {
-                    vec.insert(vec.begin() + j + 1, vec[i]);
-                    break;
-                }
-            }
-            vec.erase(vec.begin() + i + 1);
+            arr[j + 1] = arr[j];
+            j--;
         }
-        cout << "i = " << i << endl;
-        for (auto it : vec) {
-            cout << it << " ";
-        }
-        cout << "\n";
+
+        arr[j + 1] = key;
     }
 }
 
 int main()
 {
-    vector<int> vec{59, 77, 70, 75, 84, 23, 23, 88, 88, 36};
-    insertSort(vec);
+    int arr[] = {59, 77, 70, 75, 84, 23, 23, 88, 88, 36};
+    insertSort(arr, 10);
+    for (auto it : arr)
+    {
+        cout << it << " ";
+    }
     return 0;
 }
